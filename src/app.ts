@@ -1,10 +1,14 @@
-import express from "express"
-
+import axios from "axios"
+import express, { Request, Response, Application } from "express"
+import Connect from "./utils/mongoConnect"
 const app = express()
 const backUpPort = 6900
 
-app.get("/", (req, res) => {
-  res.send("hello world")
+Connect()
+app.get("/", (req: Request, res: Response) => {
+  res.status(200)
+
+  res.send("test")
 })
 
 app.listen(backUpPort || process.env.PORT, () => {
