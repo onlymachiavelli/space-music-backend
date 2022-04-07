@@ -4,9 +4,9 @@
   "description": "The backedn for spacemmusic ",
   "main": "app.ts",
   "scripts": {
-    "dev": "nodemon --exec ts-node src/app.ts",
+    "dev": "nodemon --exec ts-node src/index.ts",
     "build": "tsc",
-    "start": "node build/app.js"
+    "start": "node build/index.js"
   },
   "author": "Machiavelli",
   "license": "ISC",
