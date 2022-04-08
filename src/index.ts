@@ -1,11 +1,12 @@
 import "dotenv/config"
 import express from "express"
 import connect from "./utils/mongoConnect"
-const app = express()
+import userRoute from "./routes/user"
+const cors = require("cors")
 
-app.get("/", (req, res) => {
-  res.send("Hello World!")
-})
+const app = express()
+app.use(cors())
+app.use("/hello", userRoute)
 
 connect()
   .then(() => {
