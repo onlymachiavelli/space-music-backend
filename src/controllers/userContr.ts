@@ -7,9 +7,13 @@ const createUser: RequestHandler = async (req, res) => {
 
     password: "fck you",
   }
-  await UserTasks.addUser(data)
-
-  return res.send("User created")
+  try {
+    await UserTasks.addUser(data)
+    return res.status(201).send("User created")
+  } catch (e) {
+    console.log(e)
+    return res.status(500).send("Error")
+  }
 }
 
 export default { createUser }
