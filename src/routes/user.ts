@@ -3,6 +3,6 @@ import userContr from "../controllers/userContr"
 
 const userRoute = express.Router()
 
-userRoute.route("/").post(userContr.createUser)
+userRoute.route("/d").post(userContr.createUser)
 
 export default userRoute

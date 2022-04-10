@@ -2,10 +2,14 @@ import UserTasks from "./../services/userServ"
 import { RequestHandler } from "express"
 const createUser: RequestHandler = async (req, res) => {
   const data = {
-    name: "Alaa",
+    fullname: "Alaa Barka",
     email: "tmakaveli643@gmail.com",
-
-    password: "fck you",
+    phoneNumber: "54324884",
+    password: "hello world",
+    musicList: {
+      total: 0,
+      list: [],
+    },
   }
   try {
     await UserTasks.addUser(data)
