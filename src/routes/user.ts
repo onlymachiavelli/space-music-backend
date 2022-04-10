@@ -1,8 +1,11 @@
 import express from "express"
-import userContr from "../controllers/userContr"
+import createUser from "../controllers/createUser"
+import deleteUser from "../controllers/deleteUser"
 
 const userRoute = express.Router()
 
-userRoute.route("/d").post(userContr.createUser)
+userRoute.route("/create").post(createUser.createUser)
+
+userRoute.route("/delete").delete(deleteUser.deleteUser)
 
 export default userRoute

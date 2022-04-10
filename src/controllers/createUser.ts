@@ -1,4 +1,4 @@
-import UserTasks from "./../services/userServ"
+import UserTasks from "../services/userServ"
 import { RequestHandler } from "express"
 const createUser: RequestHandler = async (req, res) => {
   const data = {
