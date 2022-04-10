@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
   created_at: { type: Date, default: Date.now },
   phoneNumber: String,
   password: String,
+  avatar: String,
   musicList: {
     total: { type: Number, default: 0 },
     list: [
