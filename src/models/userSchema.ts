@@ -1,13 +1,14 @@
 import mongoose from "mongoose"
 
 const userSchema = new mongoose.Schema({
-  username: String,
+  _id: String,
   fullname: String,
   email: String,
+  created_at: { type: Date, default: Date.now },
   phoneNumber: String,
   password: String,
   musicList: {
-    total: Number,
+    total: { type: Number, default: 0 },
     list: [
       {
         title: String,

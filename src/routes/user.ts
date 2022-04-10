@@ -5,7 +5,11 @@ import deleteUser from "../controllers/deleteUser"
 import bodyParser from "body-parser"
 const userRoute = express.Router()
 
-userRoute.post("/", bodyParser.json(), createUser.createUser)
+userRoute.post("/", bodyParser.json(), () => {
+  if (true) {
+    createUser.createUser
+  }
+})
 
 userRoute.delete("/:id", deleteUser.deleteUser)
 
