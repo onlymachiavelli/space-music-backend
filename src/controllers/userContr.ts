@@ -15,8 +15,7 @@ const createUser: RequestHandler = async (req, res) => {
     await UserTasks.addUser(data)
     return res.status(201).send("User created")
   } catch (e) {
-    console.log(e)
-    return res.status(500).send("Error")
+    return res.status(500).send("Error" + e)
   }
 }
 
