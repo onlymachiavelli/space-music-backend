@@ -1,31 +1,38 @@
-import UserTasks from "../services/userServ"
-import { RequestHandler } from "express"
-
-import axios from "axios"
-//importing body parser
-const hostname = "localhost"
-
+import * as useTasks from "../services/userServ"
+import express, { RequestHandler } from "express"
 const createUser: RequestHandler = async (req, res) => {
   let result: boolean = false
-
-  const username = req.body.username
-  const find = await axios
-    .get(`${hostname}:6900/user/${username}`)
-    .then((response) => {
-      result = response.data !== null ? false : true
-    })
-
-  if (result) {
+  const id = "onlymachiavelli"
+  const user = await useTasks.getUser(id)
+  console.log(user)
+  if (user !== null) {
+    res.status(400).send("User already exists")
+  } else {
     const data = req.body
     try {
-      await UserTasks.addUser(data)
+      await useTasks.addUser(data)
       return res.status(201).send("User created")
     } catch (e) {
-      return res.status(500).send("Error" + e)
+      //return res.status(500).send("Error" + e)
+      res.status(400).send("User already exists")
     }
-  } else {
-    res.status(500).send("user already exists")
   }
+
+  /*
+    
+    if (result) {
+      const data = req.body
+      try {
+        await UserTasks.addUser(data)
+        return res.status(201).send("User created")
+      } catch (e) {
+        return res.status(500).send("Error" + e)
+      }
+    } else {
+      res.status(500).send("user already exists")
+    }
+    */
+  //res.send(result)
 }
 
 export default { createUser }

@@ -10,6 +10,4 @@ userRoute.delete("/:id", deleteUser.deleteUser)
 userRoute.get("/:id", getUser.finduser)
 export default userRoute
 
-userRoute.post("/", bodyParser.json(), () => {
-  createUser.createUser
-})
+userRoute.post("/", createUser.createUser)

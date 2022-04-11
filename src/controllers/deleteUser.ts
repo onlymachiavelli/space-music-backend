@@ -1,4 +1,4 @@
-import UserTasks from "./../services/userServ"
+import * as UserTasks from "./../services/userServ"
 import express, { RequestHandler } from "express"
 
 const deleteUser: RequestHandler = async (req, res) => {

@@ -1,15 +1,15 @@
 import { RequestHandler } from "express"
-import useTasks from "../services/userServ"
+import * as useTasks from "../services/userServ"
 
 const finduser: RequestHandler = async (req, res) => {
   const id = req.params.id
 
-  await useTasks.getUser(id, (err: any, adven: any) => {
-    if (err) {
-      res.status(500).send("Error sending req" + err)
-    }
-    res.status(200).json(adven)
-  })
+  const user = await useTasks.getUser(id)
+  if (user) {
+    res.status(200).send(user)
+  } else {
+    res.status(404).send("User not found")
+  }
 }
 
 export default { finduser }
