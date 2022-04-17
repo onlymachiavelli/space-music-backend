@@ -1,6 +1,6 @@
 import "dotenv/config"
 import { json } from "body-parser"
-
+import bcrypt from "bcrypt"
 import express from "express"
 import connect from "./utils/mongoConnect"
 import userRoute from "./routes/user"
@@ -15,6 +15,8 @@ connect()
   .then(() => {
     app.listen(process.env.PORT, () => {
       console.log(`Server is running on port ${process.env.PORT}`)
+      const salt = bcrypt.genSaltSync(20)
+      console.log(salt)
     })
   })
   .catch((e) => {
