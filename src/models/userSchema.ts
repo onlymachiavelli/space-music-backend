@@ -1,12 +1,12 @@
 import mongoose from "mongoose"
 
 const userSchema = new mongoose.Schema({
-  _id: String,
-  fullname: String,
-  email: String,
+  _id: { type: String, required: true, unique: true },
+  fullname: { type: String, required: true },
+  email: { type: String, required: true },
   created_at: { type: Date, default: Date.now },
-  phoneNumber: String,
-  password: String,
+  phoneNumber: { type: String, required: true },
+  password: { type: String, required: true },
   avatar: String,
   musicList: {
     total: { type: Number, default: 0 },
@@ -21,6 +21,22 @@ const userSchema = new mongoose.Schema({
         //type: String,
         duration: String,
       },
+    ],
+  },
+  albums: {
+    total: { type: Number, default: 0 },
+    list: [
+      [
+        {
+          title: { type: String, required: true },
+          artist: { type: String, required: true },
+          thumbNail: { type: String, required: true },
+          link: { type: String, required: true },
+          id: { type: String, required: true },
+          //type: { type: String, required: true },
+          duration: { type: String, required: true },
+        },
+      ],
     ],
   },
 })

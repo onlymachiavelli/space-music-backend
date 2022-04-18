@@ -15,8 +15,6 @@ connect()
   .then(() => {
     app.listen(process.env.PORT, () => {
       console.log(`Server is running on port ${process.env.PORT}`)
-      const salt = bcrypt.genSaltSync(20)
-      console.log(salt)
     })
   })
   .catch((e) => {

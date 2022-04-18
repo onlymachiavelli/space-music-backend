@@ -1,5 +1,6 @@
 import * as useTasks from "../services/userServ"
 import express, { RequestHandler } from "express"
+import bcrypt from "bcrypt"
 const createUser: RequestHandler = async (req, res) => {
   const id = "onlymachiavelli"
   const user = await useTasks.getUser(id)
@@ -7,8 +8,10 @@ const createUser: RequestHandler = async (req, res) => {
   if (user !== null) {
     res.status(400).send("User already exists")
   } else {
-    const data = req.body
+    let data = req.body
     try {
+      data.password = await bcrypt.hash(data.password, process.env.SALT || "")
+
       await useTasks.addUser(data)
       return res.status(201).send("User created")
     } catch (e) {
