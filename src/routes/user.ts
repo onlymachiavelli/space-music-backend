@@ -13,4 +13,4 @@ export default userRoute
 
 userRoute.post("/", createUser.createUser)
 
-userRoute.post("/update", update.updateField)
+userRoute.post("/u", update.updateField)
