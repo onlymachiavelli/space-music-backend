@@ -10,9 +10,9 @@ const updateField: RequestHandler = async (req, res) => {
     }
 
     await UserTasks.update(id, data)
-    console.log("updated")
+    return res.status(200).send("User updated")
   } catch (e) {
-    res.status(500).send("Error" + e)
+    return res.status(500).send("Error" + e)
   }
 }
 
