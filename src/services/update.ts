@@ -1,5 +1,5 @@
 import User from "../models/userSchema"
 
-const update = async (id: any, data: any) =>
+const Update = async (id: any, data: any) =>
   await User.findByIdAndUpdate(id, data)
-export default update
+export default Update
