@@ -4,10 +4,8 @@ import express, { RequestHandler } from "express"
 
 const updateField: RequestHandler = async (req, res) => {
   try {
-    const id = "onlymachiavelli"
-    const data = {
-      fullname: "sidek alaa",
-    }
+    const id = req.body.id
+    const data = req.body.data
 
     await UserTasks.update(id, data)
     return res.status(200).send("User updated")
