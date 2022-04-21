@@ -6,5 +6,3 @@ export const getUser = async (id: any) => User.findById(id).lean()
 
 export const deleteUser = async (id: any) => await User.findByIdAndDelete(id)
 export const getAllUsers = async () => await User.find().lean()
-export const update = async (id: any, data: any) =>
-  await User.findByIdAndUpdate(id, data)
